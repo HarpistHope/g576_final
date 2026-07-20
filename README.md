@@ -1,8 +1,8 @@
-# 🐋 Puget Sound Watch
+# Puget Sound Watch
 
 **Puget Sound Watch** is a serverless, mobile-first geospatial web application designed to facilitate real-time whale-watching and marine wildlife reporting within a framework of regional environmental stewardship across the Puget Sound region.
 
-> **Geography 576: Full-Stack Geospatial Web Applications**  
+> **Geography 576**  
 > **Author:** Hope McBride  
 > **Term:** Summer 2026 | University of Wisconsin–Madison  
 
@@ -19,7 +19,7 @@ Within the public sector, most existing whale-tracking applications function mer
 
 Puget Sound Watch resolves this disconnect by deploying a responsive web map application that merges dynamic user data with pre-established wildlife observation vantage points and conservation layers. Through the web application, users can perform several distinct actions:
 
-* **Add Sighting Reports:** Submit real-time spatial data points for both whale and general marine wildlife sightings via an embedded survey response widget.
+* **Add Sighting Reports:** Submit real-time spatial data points for both whale and general marine wildlife sightings via two embedded survey response widgets.
 * **Cross-Reference Infrastructure:** Overlay active sighting clusters with Washington State Department of Transportation (WSDOT) ferry routes and public shoreline access points to strategically plan land- and vessel-based viewing opportunities.
 * **Execute Spatial Queries:** Select localized geographic boundaries, such as the Washington State Puget Sound Partnership (WAPSP) Action Areas, to filter out extraneous data and isolate wildlife activity occurring strictly within their specific environmental zone.
 * **Coordinate Incident Response:** Access an interactive layer displaying NOAA’s West Coast Marine Mammal Stranding Network's operational zones in the event of a stranded marine mammal emergency. Clicking a zone reveals dedicated contact channels for the specific local response group handling that sector, reducing critical response times.
@@ -31,7 +31,7 @@ Puget Sound Watch resolves this disconnect by deploying a responsive web map app
 | Dataset Name | Layer Type | Data Source / URL | Use in App |
 | :--- | :--- | :--- | :--- |
 | **Esri's World Ocean Base** | Tile Raster | Esri, GEBCO, NOAA, Garmin<br>`https://services.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer` | Basemap designed for marine-specific GIS projects; provides bathymetry and shaded relief imagery. |
-| **Shoreline Public Access Points** | Point Feature Layer | WA Dept. of Ecology (Shorelands & Environmental Assistance)<br>`https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/PublicBeachAccess_Points_ViewPointTrue_PgtSnd_Rural/FeatureServer` | Locations for public viewing points along the Puget Sound coast, including accessibility, facilities, and live tide/weather links. |
+| **Shoreline Public Access Points** | Point Feature Layer | WA Dept. of Ecology (Shorelands & Environmental Assistance)<br>`https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/PublicBeachAccess_Points_ViewPointTrue_PgtSnd_Rural/FeatureServer` | Locations for public viewing points along the Puget Sound coast, including accessibility, facilities, and live tide/weather links. Note: The layer used in this project is a subset of the original WDOE layer and includes only relevant points (selected in ArcGIS Pro by H. McBride) where View_Point = Yes AND Setting_Experience = True. |
 | **WSDOT Ferry Routes** | Point/Line Feature Layer | Washington State Department of Transportation<br>`https://data.wsdot.wa.gov/arcgis/rest/services/Shared/FerryRoutes/MapServer/1` | Ferry routes across Puget Sound; helps users cross-reference active whale sightings with transit paths to improve viewing opportunities. |
 | **Pacific Whale Watch Association Members** | Point Feature Layer | PWWA (Compiled by H. McBride)<br>`https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/pacific_whale_watch_association_members/FeatureServer` | Contact details and operator locations for regional whale-watching tour companies. |
 | **West Coast Marine Mammal Stranding Network** | Line Feature Layer | NOAA Fisheries West Coast Region / USFWS<br>`https://services2.arcgis.com/C8EMgrsFcRFL6LrL/arcgis/rest/services/Live_Marine_Mammal_Stranding_Network_Live/FeatureServer` | Emergency response boundary zones displaying local telephone contacts for reporting stranded marine mammals. |
@@ -43,9 +43,9 @@ Puget Sound Watch resolves this disconnect by deploying a responsive web map app
 
 ## 3. The Tech Stack
 
-* **Frontend Libraries:** The client-side interface is built using **HTML5, CSS3, and the ArcGIS Maps SDK for JavaScript**, hosted via **GitHub Pages**. Hosting on GitHub Pages eliminates the need to provision dedicated server hardware, while the ArcGIS SDK provides production-ready UI widgets (e.g., `Locate`, `Legend`, `Expand`, `Editor`).
+* **Frontend Libraries:** The client-side interface is built using **HTML, CSS, and the ArcGIS Maps SDK for JavaScript**, hosted via **GitHub Pages**. Hosting on GitHub Pages eliminates the need to provision dedicated server hardware, while the ArcGIS SDK provides production-ready UI widgets (e.g., `Locate`, `Legend`, `Expand`, `Editor`).
 * **Backend Framework:** The application utilizes a serverless architecture powered by **ArcGIS Online (AGOL)** to host read-only reference layers and editable Hosted Feature Layers. AGOL natively manages spatial data publishing, spatial querying, and user-access security rules via open **ArcGIS REST APIs**, automatically scaling to handle high-volume citizen-science traffic.
-* **Database:** User-generated sighting data is collected through an integrated **ArcGIS Survey123** web form widget. Survey123 handles client-side requests directly to write georeferenced point geometries and attributes directly into AGOL cloud databases.
+* **Database:** User-generated sighting data is collected through integrated **ArcGIS Survey123** web form widgets. Survey123 handles client-side requests directly to write georeferenced point geometries and attributes directly into AGOL cloud databases.
 
 ---
 
@@ -89,4 +89,4 @@ To mitigate interface clutter and complexity on small screens, the application i
 Primary project focus remains on the Puget Sound region, leveraging open data layers from WSDOT, the WA Department of Ecology, and NOAA. The main technical constraint is the mobile-first design priority, ensuring structured and clear navigation across handheld devices. 
 
 * **Minimum Viable Product (MVP):** A responsive, mobile-friendly map dashboard featuring clean UI layer-toggles, two embedded Survey123 web forms writing to AGOL Hosted Feature Layers, and basic attribute filtering.
-* **Stretch Goals:** Multi-parameter attribute filtering and a client-side spatial query tool for the Action Areas layer using `FeatureLayer.createQuery()` -- specifically, actionAreasLayer.createQuery().
+* **Stretch Goals:** Multi-parameter attribute filtering and a client-side spatial query tool for the Action Areas layer using `FeatureLayer.createQuery()`.
