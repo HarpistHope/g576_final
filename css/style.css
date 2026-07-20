@@ -1,0 +1,611 @@
+/* style.css - Gemini helped with targeting specific aspects of each element for custom styling
+
+/* Global theme */
+:root {
+    --primary-blue: #1b4353;
+    --accent-teal: #06d6a0;
+    --dark-text: #2c3e50;
+    --light-bg: #f8f9fa;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--dark-text);
+    background-color: var(--light-bg);
+}
+
+/* Typography overrides for ArcGIS widgets and popups */
+.esri-widget, 
+.esri-popup__content,
+.esri-popup__header-title {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    color: var(--dark-text) !important;
+}
+
+#viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* Layout inside ArcGIS UI container */
+.action-bar {
+    display: flex;
+    gap: 10px;
+}
+
+/* Remove default ArcGIS component box/shadow from action bar wrapper */
+.esri-ui-bottom-top .action-bar,
+#actionBar {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Text buttons for adding whale and wildlife records */
+.addRecordBtn {
+    background-color: var(--primary-blue, #1b4353);
+    color: #ffffff !important;
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* Hover and active feedback */
+.addRecordBtn:hover {
+    background-color: var(--accent-teal, #06d6a0);
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.addRecordBtn:active {
+    transform: translateY(0);
+}
+
+/* Links inside popups */
+.esri-popup__content a {
+    color: var(--primary-blue) !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.esri-popup__content a:hover {
+    color: var(--accent-teal) !important;
+    text-decoration: underline !important;
+}
+
+/* Popup style for desktop devices */
+@media (min-width: 769px) {
+    .esri-popup__main-container,
+    .esri-popup--is-docked .esri-popup__main-container {
+        width: 300px !important;           
+        height: 380px !important;
+        padding: 12px;
+        box-shadow: var(--shadow-md) !important;
+        border-radius: 12px !important;
+        border: 2px solid var(--primary-blue) !important;
+        background-color: rgba(255, 255, 255, 0.95) !important;
+    }
+}
+
+
+/* Force inner Esri containers to expand to full width */
+.esri-popup__content {
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+/* Popup content tables */
+.popup-table {
+    width: 100%; 
+    border-collapse: collapse;
+    margin-bottom: 8px;
+}
+
+.popup-table.layout-fixed {
+    table-layout: fixed;
+}
+
+.popup-table th {
+    text-align: left; 
+    padding: 6px;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.popup-table td {
+    padding: 6px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Popup text formatting */
+.popup-description,
+.popup-text-main {
+    margin-top: 10px; 
+    font-size: 13px; 
+    line-height: 1.4;
+}
+
+.popup-section-title {
+    margin: 12px 0 4px 0; 
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.popup-text-optional {
+    margin: 0 0 12px 0; 
+    font-size: 13px; 
+    font-style: italic; 
+    color: #7f8c8d;
+}
+
+.popup-attribution {
+    font-size: 11px; 
+    color: #95a5a6; 
+    margin-top: 12px; 
+    text-align: right;
+}
+
+.popup-crowdsourced-content {
+    line-height: 1.5;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-alert {
+    color: #e63946;
+}
+
+/* Control panel styling */
+.control-panel-container {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95); 
+    border: 1px solid var(--border-color); 
+    border-radius: 8px;
+    width: 260px;
+    box-shadow: var(--shadow-md);
+}
+
+.control-panel-container .panel-main-title {
+    margin: 0 0 12px 0; 
+    font-size: 1.25rem; 
+    color: var(--primary-blue); 
+    border-bottom: 2px solid var(--accent-teal); 
+    padding-bottom: 6px;
+    font-weight: bold;
+}
+
+.control-panel-container .panel-section-group {
+    margin-bottom: 14px;
+}
+
+.control-panel-container .panel-section-group.dynamic-filters {
+    border-top: 1px solid var(--border-color); 
+    padding-top: 10px;
+    margin-bottom: 0;
+}
+
+.control-panel-container .panel-section-title {
+    font-weight: bold; 
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block; 
+    margin-bottom: 6px; 
+    color: #7f8c8d;
+}
+
+.control-panel-container label {
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 5px; 
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.control-panel-container input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--primary-blue);
+}
+
+.control-panel-container .filter-input-wrapper {
+    margin-bottom: 10px;
+}
+
+.control-panel-container .filter-input-wrapper:last-child {
+    margin-bottom: 0;
+}
+
+.control-panel-container .filter-input-wrapper label {
+    font-size: 12px; 
+    color: #7f8c8d; 
+    display: block; 
+    margin-bottom: 3px;
+}
+
+.control-panel-container select {
+    width: 100%; 
+    padding: 8px 12px; 
+    border: 1px solid var(--border-color); 
+    border-radius: 4px; 
+    background-color: #fff;
+    color: var(--dark-text);
+    cursor: pointer;
+}
+
+.control-panel-container select:focus-visible {
+    outline: 2px solid var(--accent-teal);
+}
+
+/* Core esri widgets interfacing */
+.esri-widget--button, 
+.esri-widget {
+    background-color: #ffffff !important;
+    color: var(--primary-blue) !important;
+    border-radius: 6px !important;
+    box-shadow: var(--shadow-sm) !important;
+    border: 1px solid var(--border-color) !important; 
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover styles for interactive elements (zoom, locate, panel toggles) */
+.esri-widget--button:hover,
+.esri-widget__button:hover {
+    background-color: var(--light-bg) !important;
+    color: var(--primary-blue) !important;
+    transform: scale(1.02);
+}
+
+/* Highlight styles for toggled or selected tools */
+.esri-widget__button--active,
+.esri-layer-list__item--selected {
+    background-color: var(--primary-blue) !important; 
+    color: #ffffff !important;
+    border-left: 4px solid var(--accent-teal) !important;
+}
+
+/* Customizing the layout frame of the geocoder utility */
+.esri-search {
+    width: 300px;
+    border: 2px solid var(--primary-blue) !important;
+}
+
+.esri-search__input {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    color: var(--dark-text) !important;
+}
+
+.esri-search__submit-button {
+    background-color: var(--light-bg) !important;
+    border-left: 1px solid var(--border-color) !important;
+    color: var(--primary-blue) !important;
+}
+
+.esri-search__submit-button:hover {
+    background-color: #e2e8f0 !important;
+}
+
+.esri-search .esri-menu {
+    max-height: 250px !important;
+    overflow: hidden !important; 
+    z-index: 9999 !important;
+}
+
+.esri-search .esri-menu .esri-menu__list {
+    max-height: 240px !important;
+    overflow-y: auto !important; 
+}
+
+/* Section titles inside structured containers (Editor/legend) */
+.esri-widget__heading {
+    color: var(--primary-blue) !important;
+    font-weight: bold !important;
+    border-bottom: 2px solid var(--accent-teal);
+    padding-bottom: 4px;
+}
+
+
+/* Mobile Screen configurations/styles -- !important used to override desktop and esri default styles */
+@media (max-width: 768px) {
+        .action-bar {
+        gap: 9px; /* Slightly tighter gap on small screens */
+    }
+
+    .addRecordBtn {
+        padding: 8px 15px;    /* Bumped up from 10px 16px */
+        font-size: 15px;       /* Slightly larger text for readability */
+        border-radius: 5px;
+    }
+
+    /* Constraining spatial dimensions of expand panels */
+    .esri-expand__content--expanded {
+        position: fixed !important;
+        top: 15px !important;
+        left: 15px !important;
+        margin-left: 40px !important; 
+        max-width: calc(90vw - 40px) !important; 
+        max-height: 70vh !important;
+        overflow-y: auto !important; 
+        box-shadow: var(--shadow-md) !important;
+    }
+
+    #controlPanelExpand .esri-expand__content--expanded {
+        width: 300px !important;
+        max-width: 90vw !important;
+    }
+
+    #searchExpand .esri-expand__content--expanded {
+        width: calc(100vw - 140px) !important; 
+        max-width: 100% !important;  
+        overflow: visible !important;         
+        overflow-y: visible !important;       
+    }
+
+    #searchExpand .esri-search {
+        width: 100% !important; 
+        overflow: visible !important;    
+    }
+
+    #searchExpand .esri-search__suggestions-menu,
+    .esri-search__container .esri-search__suggestions-menu {
+        display: block !important;            
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;           
+        top: 60px !important;                                
+        left: 55px !important;                                
+        width: calc(100vw - 140px) !important; 
+        max-height: 175px !important;
+        overflow: hidden !important;          
+        z-index: 999999 !important;           
+        background-color: #ffffff !important;
+        box-shadow: var(--shadow-md) !important;
+    }
+
+    .esri-search__suggestions-menu .esri-menu__list {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        max-height: 230px !important;
+        overflow-y: auto !important;    
+    }
+    
+    .esri-search__suggestions-menu .esri-menu__list-item {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .esri-expand__content--expanded > div,
+    .esri-expand__content--expanded .esri-legend,
+    .esri-expand__content--expanded .esri-widget {
+        box-sizing: border-box !important;
+        width: 100% !important;
+    }
+
+    .esri-legend__layer-caption {
+        font-size: 12px !important;
+    }
+
+    .esri-ui {
+        z-index: 999 !important; 
+    }
+    
+    .action-bar {
+        gap: 6px;
+    }
+
+    .addRecordBtn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .esri-expand__content--expanded:has(.esri-editor) {
+        overflow: visible !important;
+        overflow-y: visible !important;
+        width: 270px !important;
+        max-height: 70vh !important;
+        position: fixed !important; 
+        top: 15px !important;      
+        right: 45px !important;
+        left: auto !important;
+    }
+
+    .esri-expand__content--expanded .esri-editor {
+        max-height: 60vh !important;
+        overflow-y: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    /* Mobile popup design - floating appearance */
+    .esri-popup__main-container,
+    .esri-popup--is-docked .esri-popup__main-container {
+        position: fixed !important;
+        bottom: 24px !important;            
+        left: 16px !important;             
+        right: 16px !important;           
+        width: auto !important;             
+        max-width: 400px !important;        
+        max-height: 38vh !important;       
+        margin: 0 auto !important;         
+        border-radius: 16px !important;     
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
+        border: 2px solid var(--primary-blue) !important;
+        overflow-y: auto !important;       /* Lets internal content scroll if needed */
+    }
+
+    /* Clean up internal Esri padding/pointers on mobile floating cards */
+    .esri-popup__pointer {
+        display: none !important;           
+    }
+}
+
+/* Base Container and typography styles */
+.popup-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    color: var(--dark-text);
+}
+
+.popup-section {
+    margin-bottom: 12px;
+}
+
+.popup-heading {
+    margin: 4px 0;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--primary-blue);
+}
+
+.popup-label {
+    font-weight: bold;
+}
+
+/* Custom Component Structural Rules */
+.popup-container ul {
+    margin: 4px 0;
+    padding-left: 18px;
+}
+
+.popup-container li {
+    margin-bottom: 2px;
+}
+
+.popup-links {
+    margin-top: 15px;
+}
+
+.popup-spacer {
+    color: var(--border-color);
+    margin: 0 6px;
+}
+
+/* Anchors and hyperlinks styling */
+.popup-link-btn {
+    font-weight: 600;
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.popup-link-btn:hover {
+    color: var(--accent-teal);
+    text-decoration: underline;
+}
+
+.popup-link-accent {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.popup-link-accent:hover {
+    color: var(--accent-teal);
+}
+
+/* Marine Mammal Emergency Alert Styles */
+.popup-alert-box {
+    background-color: #fff2f2;
+    border-left: 4px solid #e63946;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+}
+
+.popup-hotline-link {
+    font-weight: bold;
+    font-size: 14px;
+    color: #e63946;
+    text-decoration: none;
+}
+
+.popup-hotline-link:hover {
+    text-decoration: underline;
+}
+
+/* Dividers and fine print footers */
+.popup-divider-dashed {
+    border: 0;
+    border-top: 1px dotted var(--border-color);
+    margin: 10px 0;
+}
+
+.popup-divider-solid {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 10px 0;
+}
+
+.popup-metadata {
+    font-size: 11px;
+    color: #7f8c8d;
+    font-style: italic;
+    line-height: 1.2;
+}
+
+.popup-metadata-block {
+    font-size: 11px;
+    color: #7f8c8d;
+    line-height: 1.3;
+}
+
+/* Section formatting */
+.popup-section-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin: 10px 0 4px 0;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2px;
+}
+
+.popup-text-main {
+    font-size: 12px;
+    color: var(--dark-text);
+    margin: 4px 0;
+}
+
+.popup-attribution {
+    font-size: 10px;
+    color: #95a5a6;
+    text-align: right;
+    margin-top: 8px;
+}
+
+/* Custom control panel icon */
+.custom-control-panel-icon {
+    /* (Control Panel Icon attribution: control panel by sugeng riyanto from Noun Project (CC BY 3.0)) */
+    background-image: url("../images/controlPanel_nounproject_canva.png"); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
