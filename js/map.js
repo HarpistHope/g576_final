@@ -362,7 +362,7 @@ export function initMap(viewContainerId, apiKey) {
                         <label><input type="checkbox" id="toggleWhales"> Whale Sightings</label>
                         <label><input type="checkbox" id="toggleWildlife"> Wildlife Sightings</label>
                         <span class="panel-section-title">Observation Aids</span>
-                        <label><input type="checkbox" id="toggleAccess"> Rural Public Access View Points</label>
+                        <label><input type="checkbox" id="toggleAccess"> Public Access Rural View Points</label>
                         <label><input type="checkbox" id="toggleFerry"> WSDOT Ferry Routes</label>
                         <label><input type="checkbox" id="togglePwwa"> Whale Watching Tours</label>
                         <span class="panel-section-title">Environmental Stewardship</span>
